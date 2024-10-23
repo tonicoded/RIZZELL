@@ -1,0 +1,791 @@
+/* General Body Styles */
+body {
+    min-height: 100vh;
+    background: url('bg.png') no-repeat center center fixed; /* Custom background image */
+    background-size: 100% 100%; /* Make the background fully responsive */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    font-family: 'Luckiest Guy', cursive;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    touch-action: manipulation; /* Prevents double-tap zooming */
+}
+
+
+/* Container for the falling nuts */
+#nut-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* So it doesn't interfere with clicks */
+    z-index: 1;
+}
+
+/* Style for individual nuts */
+.falling-nut {
+    position: absolute;
+    top: -50px;
+    opacity: 0.9;
+    animation: fall 8s linear infinite, sway 4s ease-in-out infinite; /* Slowed fall to create a more elegant effect */
+}
+
+/* Fall animation for nuts */
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Swaying effect for a more dynamic fall */
+@keyframes sway {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(15px);
+    }
+    100% {
+        transform: translateX(-15px);
+    }
+}
+
+
+/* Title and Subtitle */
+.title {
+    font-size: 6rem;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    color: #ffffff;
+    margin-top: 20px;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.9); /* Stronger shadow for more emphasis */
+}
+
+.subtitle {
+    font-size: 2rem;
+    color: #b3d7ff;
+    margin-top: 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Softer but larger shadow for depth */
+}
+
+/* Join Button */
+.join-button-container {
+    margin-top: 30px;
+    margin-bottom: 40px; /* Adds some space below the button */
+    display: flex;
+    justify-content: center;
+}
+
+.join-button {
+    background: linear-gradient(135deg, #0073e6, #1e90ff);
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 115, 230, 0.5);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.join-button:hover {
+    background-color: #005bb5;
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(0, 115, 230, 0.7);
+}
+
+/* Rotating Coin */
+.coin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.animated-coin {
+    width: 250px;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)); /* Glowing effect */
+}
+
+@keyframes rotateCoin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Total Participants Count - Adjusted for better responsiveness */
+.participants-count {
+    position: relative;
+    top: -20px; /* Adjusted position for better fit on both mobile and PC */
+    font-size: 1.4rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    z-index: 10; /* Ensure it's above other elements */
+    margin-bottom: 10px; /* Added space below for better separation */
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pagination-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.pagination-button:hover {
+    color: #b3d7ff;
+}
+
+#page-info {
+    font-size: 1.5rem;
+    color: #b3d7ff;
+    font-weight: bold;
+}
+/* Help Icon */
+.help-icon {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s ease, color 0.3s ease;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+
+.help-icon:hover {
+    transform: scale(1.2);
+    color: #b3d7ff;
+}
+/* Social Icons Section */
+.icon-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* Adjusted for better spacing */
+}
+
+.icon {
+    width: 50px; /* Slightly smaller */
+    height: auto;
+    margin: 0 15px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+
+
+
+/* Section: Image Left, Text Right */
+.image-text-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px; /* Adds space between marquee and this section */
+    padding: 20px;
+    width: 60%; /* Adjust based on screen size */
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto; /* Center the section */
+}
+
+/* Image styling */
+.image-text-section .image-container {
+    width: 45%; /* Adjusted image size */
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-text-section .image-container img {
+    width: 100%; /* Make image responsive */
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Text styling */
+.image-text-section .text-container {
+    width: 55%; /* More space for text */
+    padding-left: 20px;
+}
+
+.image-text-section h2 {
+    font-family: 'Luckiest Guy', cursive; /* Changed font to Luckiest Guy */
+    font-size: 3rem; /* Adjusted size */
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.image-text-section p {
+    font-family: 'Poppins', sans-serif; /* Keep Poppins for readability */
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    text-align: left; /* Better readability for the text */
+}
+
+/* Add this media query to make the section responsive */
+@media (max-width: 1024px) {
+    .image-text-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 85%; /* Adjust width for smaller screens */
+        margin: 0 auto; /* Center the section */
+    }
+
+    .image-text-section .image-container, 
+    .image-text-section .text-container {
+        width: 100%; /* Make image and text containers full width */
+        padding: 0; /* Remove padding */
+        margin-bottom: 20px; /* Add space between elements */
+    }
+
+    .image-text-section .image-container img {
+        width: 80%; /* Scale the image down for smaller screens */
+    }
+
+    .image-text-section h2 {
+        font-size: 2.5rem; /* Reduce heading size */
+    }
+
+    .image-text-section p {
+        font-size: 1.4rem; /* Reduce paragraph size */
+    }
+}
+
+/* Further tweaks for very small devices like phones */
+@media (max-width: 768px) {
+    .image-text-section {
+        width: 100%; /* Full width for smaller screens */
+    }
+
+    .image-text-section .image-container img {
+        width: 90%; /* Ensure the image doesn't overflow */
+    }
+
+    .image-text-section h2 {
+        font-size: 2rem; /* Slightly smaller heading for phones */
+    }
+
+    .image-text-section p {
+        font-size: 1.2rem; /* Smaller paragraph text for better readability */
+    }
+}
+
+
+/* New Background */
+.gradient-bg {
+    background: linear-gradient(135deg, #0064d2, #ffdee9);
+    padding: 50px 0;
+}
+
+/* Tokenomics Animation */
+.animated-spin {
+    animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Copy Button with Bounce Effect */
+.animated-bounce {
+    transition: transform 0.2s ease-in-out;
+}
+
+.animated-bounce:hover {
+    transform: translateY(-5px);
+}
+
+/* Copy Notification */
+.copy-notification {
+    color: #fff;
+    font-size: 1.2rem;
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+}
+/* Tokenomics Section Responsive */
+.tokenomics-section {
+    width: 40%; /* Maintain 40% width on desktop */
+    margin: 40px auto;
+    padding: 40px;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+    position: relative;
+}
+/* Content Container */
+.content-container {
+    display: flex;
+    justify-content: space-around; /* Better spacing between items */
+    align-items: center;
+    gap: 20px; /* Reduced gap */
+    padding: 20px 0;
+}
+
+/* Chart Container */
+.chart-container {
+    flex: 1;
+    text-align: center;
+}
+
+.pie-chart {
+    width: 400px;
+    height: auto;
+}
+
+/* Info Container */
+.info-container {
+    flex: 1;
+    text-align: left;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.info-container h2 {
+    font-size: 3rem; /* Font size reduced for balance */
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); /* Softer text-shadow */
+}
+
+.info-container p {
+    margin: 10px 0;
+    font-size: 2rem; /* Font size decreased for readability */
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: center; /* Centering the buttons */
+    align-items: center;
+    flex-direction: column; /* Stack buttons vertically */
+    margin-top: 20px;
+    gap: 15px;
+}
+
+/* Button Styles */
+.btn {
+    background-color: #0064d2;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.6rem;
+    font-family: 'Luckiest Guy', cursive;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #004ba0; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarges on hover for a similar effect */
+}
+
+/* Responsive design for Mobile Devices */
+@media (max-width: 768px) {
+    .tokenomics-section {
+        width: 90%; /* Full width on mobile devices */
+        padding: 20px;
+    }
+    .content-container {
+        flex-direction: column;
+    }
+
+    .pie-chart {
+        width: 220px;
+        margin-bottom: 20px;
+    }
+
+    .info-container {
+        text-align: center; /* Center-align text for mobile */
+    }
+
+    .button-container {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+
+    .btn {
+        width: 80%; /* Full width on mobile */
+        margin-bottom: 10px;
+    }
+}
+
+/* Further UI enhancements */
+.tokenomics-section h2 {
+    font-family: 'Luckiest Guy', cursive;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 3.4rem; /* Larger and more visible heading */
+    text-align: left;
+    padding-left: 10px;
+}
+
+.info-container {
+    text-align: left;
+    font-family: 'Arial', sans-serif; /* Alternate font for better readability */
+}
+
+
+
+/* Styling for the marquee container with background and border */
+.marquee-container {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(135deg, #0052ff, #0096ff); /* Gradient background for a better visual */
+    border: 3px solid #ffffff; /* White border around the container */
+    border-radius: 15px; /* Smooth rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Adds a shadow for depth */
+    margin-top: 30px; /* Creates space between the Join button and the scrolling bar */
+    margin-bottom: 30px;
+    padding: 10px; /* Padding inside the container for better spacing */
+}
+
+.marquee-content {
+    display: flex;
+    animation: scroll-left 20s linear infinite;
+    width: max-content; /* Make sure content stretches indefinitely */
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    padding: 0 60px; /* Increases padding inside each item for a more spacious look */
+    white-space: nowrap;
+    
+}
+
+.logo {
+    width: 50px; /* Adjust size */
+    margin-right: 15px;
+}
+
+.text {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 2.5rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0); /* Start position */
+    }
+    100% {
+        transform: translateX(-50%); /* End after half the content moves off-screen */
+    }
+}
+
+/* Ensuring smoother transitions to avoid glitches */
+.marquee-content {
+    will-change: transform;
+    animation-timing-function: linear;
+}
+
+.scroll-button {
+    background-color: #0064d2; /* Same blue as the other buttons */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.6rem;
+    font-family: 'Luckiest Guy', cursive; /* Consistent font */
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.scroll-button:hover {
+    background-color: #004ba0; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarges on hover */
+}
+
+
+
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Overlay background */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    color: black;
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: black;
+}
+
+/* Scoreboard Container Fix - Alignment and Background */
+.scoreboard-container {
+    position: relative;
+    background-color: rgba(59, 89, 152, 0.9);
+    border-radius: 15px;
+    margin-top: 30px;
+    max-width: 600px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 115, 230, 0.5);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    padding: 20px;
+    border: 3px solid #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Fix background alignment */
+    margin-bottom: 20px; /* Added for better spacing */
+}
+
+/* Fix for NUT-FREE CHAMPS section */
+.scoreboard-container h2 {
+    font-size: 3.5rem;
+    font-style: italic;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+    margin-top: 10px; /* Adjusted to fix alignment */
+    padding: 10px; /* Added padding for better alignment */
+    background-color: rgba(59, 89, 152, 1); /* Ensure the title background remains */
+    border-radius: 10px; /* Smooth out the edges */
+}
+
+/* Table Header and Row Styles */
+.table-header, .scoreboard-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px 20px;
+    background-color: rgba(59, 89, 152, 0.9);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    
+}
+
+
+.scoreboard-row {
+    font-family: 'Poppins', sans-serif; /* Apply Poppins font only to the table rows */
+    background-color: rgba(59, 89, 152, 0.7);
+    font-size: 1.4rem;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 20px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
+
+.scoreboard-row:hover {
+    background-color: rgba(72, 114, 184, 0.8);
+    transform: translateY(-3px);
+}
+
+/* CTA Button Styling */
+.cta-button {
+    background-color: #1e90ff;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #4683f5;
+    transform: scale(1.1);
+}
+
+/* Falling Nuts Animation */
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.falling-nut {
+    position: absolute;
+    top: -50px;
+    width: 30px;
+    animation: fall 5s linear infinite;
+    opacity: 1;
+}
+
+/* Responsive Layout for Mobile Devices (up to 480px) */
+@media (max-width: 480px) {
+    .title {
+        font-size: 3.5rem;
+        letter-spacing: 6px;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .coin-container {
+        margin-top: 15px;
+    }
+
+    .scoreboard-container {
+        width: 90%;
+        max-width: 90%;
+        padding: 15px 10px;
+    }
+
+    .table-header, .scoreboard-row {
+        font-size: 1rem;
+        padding: 5px 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    html, body {
+        overflow-x: hidden;
+    }
+}
+
+/* Responsive Layout for Tablets (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .title {
+        font-size: 4.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .coin-container {
+        margin-top: 20px;
+    }
+
+    .scoreboard-container {
+        width: 95%;
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .table-header, .scoreboard-row {
+        font-size: 1.2rem;
+        padding: 8px 12px;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+}
+
+/* Responsive Layout for Larger Devices (769px and above) */
+@media (min-width: 769px) {
+    .title {
+        font-size: 5.5rem;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+    }
+
+    .coin-container {
+        margin-top: 30px;
+    }
+
+    .scoreboard-container {
+        width: 90%;
+        max-width: 600px;
+        padding: 30px;
+    }
+
+    .table-header, .scoreboard-row {
+        font-size: 1.4rem;
+        padding: 10px 15px;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+}
